@@ -43,3 +43,8 @@ Output 3:
 > 1 imported box of chocolates: 11.85
 > Sales Taxes: 6.70
 > Total: 74.68
+
+
+###THE BUILD
+
+Application was built using maven in visual studio code
