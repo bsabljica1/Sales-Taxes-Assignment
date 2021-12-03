@@ -45,7 +45,7 @@ public class Item {
         this.afterTax = afterTax;        
     }
 
-    public void calculateItemTax() {
+    public double calculateItemTax() {
 
         double importTax = 0;
         double otherTax = 0;
@@ -58,9 +58,20 @@ public class Item {
             otherTax = price * quantity * 0.1;
         }
 
+
         afterTax = importTax + otherTax;
 
         afterTax = Math.round(afterTax*100.0)/100.0;
+
+        return afterTax;
+
+    }
+
+    public double getTaxedPrice() {
+
+        double taxedPrice = price + calculateItemTax();
+        taxedPrice = Math.round(taxedPrice*100.0)/100.0;
+        return taxedPrice;
 
     }
 

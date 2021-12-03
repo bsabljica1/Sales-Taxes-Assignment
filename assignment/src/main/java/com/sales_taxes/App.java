@@ -1,4 +1,5 @@
 package com.sales_taxes;
+import java.sql.Date;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -39,7 +40,7 @@ public final class App {
 
         if( str.matches("^\\d+\\.\\d+") || str.matches("^\\d+")) {
             price = Double.parseDouble(str);
-            price = Math.round(price*100.0)/100.0;
+            //price = Math.round(price*100.0)/100.0;
             break;
         }
 		else
@@ -135,7 +136,30 @@ public final class App {
 
         }
 
-        System.out.println("The number of items you have entered is: " + items.size());
+
+        System.out.println("\nThe receipt details are listed below: \n");
+        System.out.println("Item name   Quantity    Price   Imported    Tax\n");
+
+        double totalTax = 0;
+        double totalPrice = 0;
+
+        for (int i = 0; i < items.size(); i++) {
+            String importHelp = "No";
+            if (items.get(i).getImported())
+                importHelp = "Yes";
+            System.out.println(items.get(i).getName() + "   " + items.get(i).getQuantity() + "   " + items.get(i).getPrice()
+             + "    " + importHelp + "   " + items.get(i).getTaxedPrice() + "\n" );
+
+             totalTax += items.get(i).calculateItemTax();
+             totalPrice += items.get(i).getTaxedPrice();
+
+        }
+
+        totalTax = Math.round(totalTax*100.0)/100.0;
+        totalPrice = Math.round(totalPrice*100.0)/100.0;
+
+        System.out.println("\nThe total tax is: " + totalTax);
+        System.out.println("\nThe total price is: " + totalPrice);
 
     }
 }
