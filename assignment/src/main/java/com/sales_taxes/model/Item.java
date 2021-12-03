@@ -47,6 +47,8 @@ public class Item {
 
     public double calculateItemTax() {
 
+        //CALCULATING THE IMPORT TAX AND THE TAX IF IT BELONGS TO THE OTHER CATEGORY
+
         double importTax = 0;
         double otherTax = 0;
 
@@ -59,7 +61,7 @@ public class Item {
         }
 
 
-        afterTax = importTax + otherTax;
+        afterTax = Math.round(importTax*100.0)/100.0 + Math.round(otherTax*100.0)/100.0;
 
         afterTax = Math.round(afterTax*100.0)/100.0;
 
@@ -68,6 +70,8 @@ public class Item {
     }
 
     public double getTaxedPrice() {
+
+        //FUNCTION FOR CALCULATING THE TAXED PRICE OF THE ITEM
 
         double taxedPrice = price + calculateItemTax();
         taxedPrice = Math.round(taxedPrice*100.0)/100.0;
