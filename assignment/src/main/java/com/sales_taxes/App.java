@@ -1,11 +1,8 @@
 package com.sales_taxes;
-import java.sql.Date;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
-
 import com.sales_taxes.model.Item;
 
 public final class App {
